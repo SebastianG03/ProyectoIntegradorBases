@@ -19,5 +19,31 @@ CREATE TABLE Guias(
 CREATE TABLE Actividades(
     Id INT IDENTITY,
     Nombre NVARCHAR(10),
-    CuposDisponibles TINYINT
+    CuposDisponibles TINYINT,
+    Precio DECIMAL(4,2)
+);
+
+-- Un huesped puede reservar una a varias
+-- actividades y una actividad puede
+-- ser reservada por uno o varios huespedes
+
+-- Tabla de ruptura CITAS
+CREATE TABLE Citas(
+    Id INT IDENTITY,
+    IdHuesped INT,
+    IdActividad INT,
+    -- En caso de que la actividad
+    -- requiera de un guia:
+    IdGuiaEncargado INT DEFAULT NULL,
+    -- Para saber conocer el estado
+    -- de la actividad:
+    Finalizada BOOLEAN
+
+    -- Llaves Foráneas
+    FOREIGN KEY (IdHuesped)
+    REFERENCES Huespedes(Id)
+    FOREIGN KEY (IdActividad)
+    REFERENCES Actividades(Id)
+    FOREIGN KEY (IdGuiaEncargado)
+    REFERENCES Guias(Id)
 );
