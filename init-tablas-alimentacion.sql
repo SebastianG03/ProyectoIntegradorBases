@@ -24,6 +24,12 @@ CREATE TABLE dbo.Ingredientes(
     REFERENCES Proveedores(Id)
 );
 
+-- Catálogo TIPO-COMIDA
+CREATE TABLE dbo.TiposComida(
+    Id INT IDENTITY,
+    Nombre NVARCHAR(10)
+);
+
 -- Tabla COMIDAS
 -- Contiene todas las comidas
 -- que conforman los menús que ofrece
@@ -31,11 +37,16 @@ CREATE TABLE dbo.Ingredientes(
 CREATE TABLE dbo.Alimentos(
     Id INT IDENTITY,
     Nombre NVARCHAR(10),
+    IdTipo INT,
     -- Describe la preparación de la comida
     Receta TEXT,
     -- Número de unidades que se
     -- obtiene por cada receta
     UnidadesPorReceta INT
+
+    -- Llaves foráneas
+    FOREIGN KEY (IdTipo)
+    REFERENCES TiposComida(Id)
 );
 
 -- Tabla MENUS
@@ -43,7 +54,10 @@ CREATE TABLE dbo.Alimentos(
 -- el hotel
 CREATE TABLE dbo.Menus(
     Id INT IDENTITY,
-    Precio DECIMAL(4,2)
+    Precio DECIMAL(4,2),
+    -- Fecha de la última vez que se
+    -- utilizó el menú
+    Usado DATE
 );
 
 -- Cada comida se conforma de uno
@@ -80,11 +94,4 @@ CREATE TABLE dbo.ComidaMenu(
     REFERENCES Comidas(Id)
     FOREIGN KEY (IdMenu)
     REFERENCES Menus(Id)
-);
-
-CREATE TABLE dbo.Bar(
-    Id INT IDENTITY PRIMARY KEY,
-    Comida VARCHAR(30), --Desayuno, almuerzo o merienda
-    HorarioInicio DATETIME,
-    HorarioFin DATETIME,
 );
