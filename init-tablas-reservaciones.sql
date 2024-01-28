@@ -3,9 +3,22 @@
 -- tiene el hotel
 CREATE TABLE dbo.Opciones(
     Id INT IDENTITY,
-    NumeroDias INT,
-    PrecioAdulto DECIMAL(4,2),
-    PrecioMenorEdad DECIMAL(4,2)
+    -- El número de días no puede ser NULL
+    NumeroDias INT NOT NULL,
+    -- El precio por adulto no puede ser NULL
+    PrecioAdulto DECIMAL(4,2) NOT NULL,
+    -- El precio por menor de edad no puede ser NULL
+    PrecioMenorEdad DECIMAL(4,2) NOT NULL
+
+    -- REESTRICCIONES
+        -- Llave Primaria
+    CONSTRAINT PK_Opcion PRIMARY KEY(Id)
+        -- El número de días debe ser mayor a cero
+    CONSTRAINT CK_NumeroDias CHECK (NumeroDias > 0)
+        -- El precio por adulto debe ser mayor a cero
+    CONSTRAINT CK_PrecioAdulto CHECK (PrecioAdulto > 0)
+        -- El precio por menor de edad debe ser mayor a cero
+    CONSTRAINT CK_PrecioMenorEdad CHECK (PrecioMenorEdad > 0)
 );
 
 -- TABLA RESERVACIONES
@@ -13,19 +26,21 @@ CREATE TABLE dbo.Opciones(
 -- se han efectuado en e hotel
 CREATE TABLE dbo.Reservaciones(
     Id INT IDENTITY,
-    IdHuesped INT,
-    IdOpcion INT,
-    FechaLLegada DATETIME,
+    -- La relación entre HUESPED-RESERVACION no puede ser NULL
+    IdHuesped INT NOT NULL,
+    -- La relación entre OPCION-RESERVACION no puede ser NULL
+    IdOpcion INT NOT NULL,
+    -- La fecha y hora de llegada del huesped no puede ser NULL
+    FechaLLegada DATETIME NOT NULL
 
+    -- REESTRICCIONES
+        -- Llave Primaria
+    CONSTRAINT PK_Reservacion PRIMARY KEY(Id)
     -- Llaves Foráneas
-    -- Una reservación está asociada
-    -- a un solo huésped
-    FOREIGN KEY (IdHuesped)
-    REFERENCES Huespedes(Id),
-    -- Hace referencia a la opción
-    -- que eligió el huésped (no puede ser alterada)
-    FOREIGN KEY (IdOpcion)
-    REFERENCES Opciones(Id)
+    -- Una reservación está asociada a un solo huésped
+    FOREIGN KEY (IdHuesped) REFERENCES Huespedes(Id),
+    -- Hace referencia a la opción que eligió el huésped (no puede ser alterada)
+    FOREIGN KEY (IdOpcion) REFERENCES Opciones(Id)
 );
 
 -- Variables que pueden ser calculadas con un STORE PROCEDURE:
