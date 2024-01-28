@@ -56,10 +56,8 @@ CREATE TABLE dbo.Huespedes(
         -- La relación entre ACOMPAÑATE-ANFITRIÓN tiene como valor por defecto: NULL
     CONSTRAINT DF_IdAnfitrion DEFAULT NULL FOR IdAnfitrion
     -- Llaves Foráneas
-    FOREIGN KEY (IdPersona)
-    REFERENCES Personas(Id)
-    FOREIGN KEY (IdAnfitrion)
-    REFERENCES Huespedes(Id)
+    FOREIGN KEY (IdPersona) REFERENCES Personas(Id)
+    FOREIGN KEY (IdAnfitrion) REFERENCES Huespedes(Id)
 );
 
 -- Catálogo CARGOS
