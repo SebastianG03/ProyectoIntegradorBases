@@ -28,7 +28,7 @@ CREATE TABLE dbo.Ingredientes(
 -- Contiene todas las comidas
 -- que conforman los menús que ofrece
 -- el hotel
-CREATE TABLE dbo.Comidas(
+CREATE TABLE dbo.Alimentos(
     Id INT IDENTITY,
     Nombre NVARCHAR(10),
     -- Describe la preparación de la comida
@@ -80,4 +80,11 @@ CREATE TABLE dbo.ComidaMenu(
     REFERENCES Comidas(Id)
     FOREIGN KEY (IdMenu)
     REFERENCES Menus(Id)
+);
+
+CREATE TABLE dbo.Bar(
+    Id INT IDENTITY PRIMARY KEY,
+    Comida VARCHAR(30), --Desayuno, almuerzo o merienda
+    HorarioInicio DATETIME,
+    HorarioFin DATETIME,
 );
