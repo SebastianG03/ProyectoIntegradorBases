@@ -44,5 +44,36 @@ CREATE TABLE dbo.Huespedes(
     REFERENCES Huespedes(Id)
 );
 
+-- Catálogo CARGOS
+-- Contiene todos los cargos
+-- disponibles en el hotel
+CREATE TABLE dbo.Cargos(
+    Id INT IDENTITY,
+    Nombre NVARCHAR(10),
+    EspaciosDisponibles TINYINT
+);
+
+-- Tabla PERSONAL
+-- Contiene a todo el personal
+-- contratado por el hotel
+CREATE TABLE dbo.Personal(
+    Id INT IDENTITY,
+    -- Para acceder a la información
+    -- personal del empleado
+    IdPersona INT,
+    IdCargo INT,
+    AniosExperiencia TINYINT,
+    NivelEducacion VARCHAR(50),
+    Especialidad VARCHAR(50),
+    IdiomaMaterno VARCHAR(50),
+    Salario DECIMAL(4,2)
+
+    -- Llaves Foráneas
+    FOREIGN KEY (IdPersona)
+    REFERENCES Personas(Id)
+    FOREIGN KEY (IdCargo)
+    REFERENCES Cargos(Id)
+);
+
 -- Variables que pueden ser calculadas con un STORE PROCEDURE:
 -- 1. Edad de la persona
