@@ -18,10 +18,10 @@ CREATE TABLE Guias(
 -- que ofrece el hotel
 CREATE TABLE Actividades(
     Id INT IDENTITY,
-    Nombre NVARCHAR(10),
+    Nombre NVARCHAR(10) NOT NULL,
     -- Capacidad de personas
-    Capacidad TINYINT,
-    Precio DECIMAL(4,2)
+    Capacidad TINYINT NOT NULL,
+    Precio DECIMAL(4,2) NOT NULL
 );
 
 -- Tabla ITINERARIO-ACTIVIDADES

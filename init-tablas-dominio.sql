@@ -49,8 +49,8 @@ CREATE TABLE dbo.Huespedes(
 -- disponibles en el hotel
 CREATE TABLE dbo.Cargos(
     Id INT IDENTITY,
-    Nombre NVARCHAR(10),
-    EspaciosDisponibles TINYINT
+    Nombre NVARCHAR(10) NOT NULL,
+    EspaciosDisponibles TINYINT NOT NULL
 );
 
 -- Tabla PERSONAL

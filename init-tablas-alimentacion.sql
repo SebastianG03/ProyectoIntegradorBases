@@ -3,7 +3,7 @@
 -- de ingredientes
 CREATE TABLE dbo.Proveedores(
     Id INT IDENTITY,
-    Nombre NVARCHAR(10),
+    Nombre NVARCHAR(10) NOT NULL,
     TiempoRespuesta DECIMAL(4,2)
 );
 
@@ -13,11 +13,11 @@ CREATE TABLE dbo.Proveedores(
 -- comidas que ofrece el hotel
 CREATE TABLE dbo.Ingredientes(
     Id INT IDENTITY,
-    Nombre NVARCHAR(10),
+    Nombre NVARCHAR(10) NOT NULL,
     IdProveedor INT,
     -- Número de unidades disponibles
     -- en stock
-    UnidadesDisponibles INT
+    UnidadesDisponibles INT DEFAULT(0)
 
     -- Llaves foráneas
     FOREIGN KEY (IdProveedor)
