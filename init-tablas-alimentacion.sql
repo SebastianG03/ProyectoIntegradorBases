@@ -1,10 +1,27 @@
+-- Tabla PROVEEDORES
+-- Contiene a todos los proveedores
+-- de ingredientes
+CREATE TABLE dbo.Proveedores(
+    Id INT IDENTITY,
+    Nombre NVARCHAR(10),
+    TiempoRespuesta DECIMAL(4,2)
+);
+
 -- Tabla INGREDIENTES
 -- Contiene todos los ingredientes
 -- necesarios para preparar las 
 -- comidas que ofrece el hotel
 CREATE TABLE dbo.Ingredientes(
     Id INT IDENTITY,
-    Nombre NVARCHAR(10)
+    Nombre NVARCHAR(10),
+    IdProveedor INT,
+    -- Número de unidades disponibles
+    -- en stock
+    UnidadesDisponibles INT
+
+    -- Llaves foráneas
+    FOREIGN KEY (IdProveedor)
+    REFERENCES Proveedores(Id)
 );
 
 -- Tabla COMIDAS
@@ -16,8 +33,8 @@ CREATE TABLE dbo.Comidas(
     Nombre NVARCHAR(10),
     -- Describe la preparación de la comida
     Receta TEXT,
-    -- Almacena el número de unidades que se
-    -- obtiene por cada reseta
+    -- Número de unidades que se
+    -- obtiene por cada receta
     UnidadesPorReceta INT
 );
 
@@ -34,8 +51,7 @@ CREATE TABLE dbo.Menus(
 -- puede pertenecer a una o varias comidas
 
 -- Tabla de ruptura INGREDIENTE-COMIDA
-CREATE TABLE dbo.IngredienteComida
-(
+CREATE TABLE dbo.IngredienteComida(
     Id INT IDENTITY,
     IdIngrediente INT,
     IdComida INT
@@ -52,8 +68,7 @@ CREATE TABLE dbo.IngredienteComida
 -- a uno o varios menús
 
 -- Tabla de ruptura COMIDA-MENÚ
-CREATE TABLE dbo.ComidaMenu
-(
+CREATE TABLE dbo.ComidaMenu(
     Id INT IDENTITY,
     IdComida INT,
     IdMenu INT,
