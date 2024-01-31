@@ -8,9 +8,9 @@ CREATE TABLE dbo.Proveedores(
     TiempoRespuesta DECIMAL(4,2) NOT NULL
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Proveedor PRIMARY KEY(Id)
+    CONSTRAINT PK_Proveedor PRIMARY KEY(Id),
         -- El nombre del proveedor no puede estar vacío
-    CONSTRAINT CK_NombreProveedor CHECK (Nombre != '')
+    CONSTRAINT CK_NombreProveedor CHECK (Nombre != ''),
         -- El tiempo de respuesta debe ser mayor a cero
     CONSTRAINT CK_TiempoRespuesta CHECK (TiempoRespuesta > 0)
 );
@@ -28,11 +28,11 @@ CREATE TABLE dbo.Ingredientes(
     UnidadesDisponibles INT -- "STOCK"
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Ingrediente PRIMARY KEY(Id)
+    CONSTRAINT PK_Ingrediente PRIMARY KEY(Id),
         -- El nombre del ingrediente no puede estar vacío
-    CONSTRAINT CK_NombreIngrediente CHECK (Nombre != '')
+    CONSTRAINT CK_NombreIngrediente CHECK (Nombre != ''),
         -- Las unidades disponibles deben ser igual o mayor a cero
-    CONSTRAINT CK_UnidadesDisponibles CHECK (UnidadesDisponibles >= 0)
+    CONSTRAINT CK_UnidadesDisponibles CHECK (UnidadesDisponibles >= 0),
     -- Llaves Foráneas
     FOREIGN KEY (IdProveedor) REFERENCES Proveedores(Id)
 );
@@ -41,10 +41,10 @@ CREATE TABLE dbo.Ingredientes(
 CREATE TABLE dbo.TiposAlimentos(
     Id INT IDENTITY,
     -- El nombre del tipo de alimento no puede ser NULL
-    Nombre NVARCHAR(10)
+    Nombre NVARCHAR(20),
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_TipoComida PRIMARY KEY(Id)
+    CONSTRAINT PK_TipoComida PRIMARY KEY(Id),
         -- El nombre del tipo de alimento no puede estar vacío
     CONSTRAINT CK_NombreTipoComida CHECK (Nombre != '')
 );
@@ -58,20 +58,20 @@ CREATE TABLE dbo.Alimentos(
     -- La relación entre TIPO ALIMENTO-ALIMENTO no puede ser NULL
     IdTipo INT NOT NULL,
     -- Describe la preparación de la comida [OPCIONAL]
-    Receta TEXT,
+    Receta VARCHAR(MAX),
     -- Número de unidades que se obtiene por cada receta [OPCIONAL]
     UnidadesPorReceta INT
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Alimento PRIMARY KEY(Id)
+    CONSTRAINT PK_Alimento PRIMARY KEY(Id),
         -- El nombre del alimento no puede estar vacío
-    CONSTRAINT CK_NombreAlimento CHECK (Nombre != '')
+    CONSTRAINT CK_NombreAlimento CHECK (Nombre != ''),
         -- La receta del alimento no puede estar vacía
-    CONSTRAINT CK_RecetaAlimento CHECK (Receta != '')
+    CONSTRAINT CK_RecetaAlimento CHECK (Receta != ''),
         -- Las unidades que se obtiene por receta deben ser mayor a cero
-    CONSTRAINT CK_UnidadesPorReceta CHECK (UnidadesPorReceta > 0)
+    CONSTRAINT CK_UnidadesPorReceta CHECK (UnidadesPorReceta > 0),
     -- Llaves Foráneas
-    FOREIGN KEY (IdTipo) REFERENCES TiposComida(Id)
+    FOREIGN KEY (IdTipo) REFERENCES TiposAlimentos(Id)
 );
 
 -- Tabla MENUS
@@ -81,17 +81,14 @@ CREATE TABLE dbo.Menus(
     -- El precio del menú no puede ser NULL
     Precio DECIMAL(4,2) NOT NULL,
     -- Fecha de la última vez que se utilizó el menú
-    Usado DATE,
+    Usado DATE NULL,
     -- EL diferenciador entre menú de huésped y personal no puede ser NULL
-    MenuHuesped BIT NOT NULL -- [0: Huésped], [1: Personal]
+    MenuHuesped BIT NOT NULL, -- [0: Huésped], [1: Personal]
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_Menu PRIMARY KEY(Id)
+    CONSTRAINT PK_Menu PRIMARY KEY(Id),
         -- El precio del menú debe ser mayor a cero
     CONSTRAINT CK_PrecioMenu CHECK (Precio > 0)
-        -- La fecha de la última vez que fue utilizado el menú tiene
-        -- como valor por defecto NULL
-    CONSTRAINT DF_Usado DEFAULT NULL FOR Usado
 );
 
 -- Cada alimento se conforma de uno a varios ingredientes y cada ingrediente
@@ -103,13 +100,13 @@ CREATE TABLE dbo.IngredienteAlimento(
     -- La relación entre INGREDIENTE-INGREDIENTE ALIMENTO no puede ser NULL
     IdIngrediente INT NOT NULL,
     -- La relación entre ALIMENTO-INGREDIENTE ALIMENTO no puede ser NULL
-    IdAlimento INT NOT NULL
+    IdAlimento INT NOT NULL,
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_IngredienteAlimento PRIMARY KEY(Id)
+    CONSTRAINT PK_IngredienteAlimento PRIMARY KEY(Id),
     -- Llaves foráneas
-    FOREIGN KEY (IdIngrediente) REFERENCES Ingredientes(Id)
-    FOREIGN KEY (IdComida) REFERENCES Comidas(Id)
+    FOREIGN KEY (IdIngrediente) REFERENCES Ingredientes(Id),
+    FOREIGN KEY (IdAlimento) REFERENCES Alimentos(Id)
 );
 
 -- Cada menú se compone de uno o varios alimentos y cada alimento puede pertenecer
@@ -119,17 +116,17 @@ CREATE TABLE dbo.IngredienteAlimento(
 CREATE TABLE dbo.AlimentoMenu(
     Id INT IDENTITY,
     -- La relación entre ALIMENTO-ALIMENTO MENÚ no puede ser NULL
-    IdComida INT NOT NULL,
+    IdAlimento INT NOT NULL,
     -- La relación entre MENU-ALIMENTO MENÚ no puede ser NULL
     IdMenu INT NOT NULL,
     -- La cantidad de cada comida no puede ser NULL
-    Cantidad INT NOT NULL
+    Cantidad INT NOT NULL,
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_AlimentoMenu PRIMARY KEY(Id)
+    CONSTRAINT PK_AlimentoMenu PRIMARY KEY(Id),
         -- La cantidad de cada comida debe ser mayor a cero
-    CONSTRAINT CK_CantidadComida CHECK (Cantidad > 0)
+    CONSTRAINT CK_CantidadComida CHECK (Cantidad > 0),
     -- Llaves foráneas
-    FOREIGN KEY (IdComida) REFERENCES Comidas(Id)
+    FOREIGN KEY (IdAlimento) REFERENCES Alimentos(Id),
     FOREIGN KEY (IdMenu) REFERENCES Menus(Id)
 );
