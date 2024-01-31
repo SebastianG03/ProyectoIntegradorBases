@@ -2,13 +2,11 @@
 CREATE TABLE dbo.Paises(
     Id INT IDENTITY,
     -- El nombre del país no puede ser NULL
-    Nombre NVARCHAR(10) NOT NULL
+    Nombre NVARCHAR(50) NOT NULL
 
     -- REESTRICCIONES:
         -- Llave Principal
     CONSTRAINT PK_Pais PRIMARY KEY(Id)
-        -- El nombre del país debe ser único
-    CONSTRAINT UQ_NombrePais UNIQUE(Nombre)
         -- El nombre del país no puede estar vacío
     CONSTRAINT CK_NombrePais CHECK (Nombre != '')
 );
@@ -31,11 +29,13 @@ CREATE TABLE dbo.Personas(
 
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_Persona PRIMARY KEY(Id)
+    CONSTRAINT PK_Persona PRIMARY KEY(Id),
         -- El nombre de la persona no puede estar vacío
-    CONSTRAINT CK_NombrePersona CHECK (Nombre != '')
+    CONSTRAINT CK_NombrePersona CHECK (Nombre != ''),
         -- El apellido de la persona no puede estar vacío
-    CONSTRAINT CK_ApellidoPersona CHECK (Apellido != '')
+    CONSTRAINT CK_ApellidoPersona CHECK (Apellido != ''),
+        -- La fecha de nacimiento debe ser menor a la fecha actual
+    CONSTRAINT CK_FechaNacimiento CHECK (FechaNacimiento < GETDATE()),
     -- Llaves Foráneas
     FOREIGN KEY (IdPaisOrigen) REFERENCES Paises(Id)
 );
@@ -48,15 +48,15 @@ CREATE TABLE dbo.Huespedes(
     -- La relación entre PERSONA-HUESPED no puede ser NULL
     IdPersona NVARCHAR(11) NOT NULL,
     -- * En el caso de que el huesped sea un acompañante o un menor de edad *
-    IdAnfitrion NVARCHAR(10) DEFAULT NULL
+    IdAnfitrion NVARCHAR(11) DEFAULT NULL
 
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_Huesped PRIMARY KEY(Id)
+    CONSTRAINT PK_Huesped PRIMARY KEY(Id),
         -- La relación entre ACOMPAÑATE-ANFITRIÓN tiene como valor por defecto: NULL
-    CONSTRAINT DF_IdAnfitrion DEFAULT NULL FOR IdAnfitrion
+    CONSTRAINT DF_IdAnfitrion DEFAULT NULL FOR IdAnfitrion,
     -- Llaves Foráneas
-    FOREIGN KEY (IdPersona) REFERENCES Personas(Id)
+    FOREIGN KEY (IdPersona) REFERENCES Personas(Id),
     FOREIGN KEY (IdAnfitrion) REFERENCES Huespedes(Id)
 );
 
@@ -70,9 +70,9 @@ CREATE TABLE dbo.Cargos(
 
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_Cargo PRIMARY KEY(Id)
+    CONSTRAINT PK_Cargo PRIMARY KEY(Id),
         -- El nombre del cargo no puede estar vacío
-    CONSTRAINT CK_NombreCargo CHECK (Nombre != '')
+    CONSTRAINT CK_NombreCargo CHECK (Nombre != ''),
         -- Los espacios disponibles deben ser mayor a 0
     CONSTRAINT CK_EspaciosDisponibles CHECK (EspaciosDisponibles > 0)
 );
@@ -85,7 +85,7 @@ CREATE TABLE dbo.NivelesEducacion(
 
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_NivelEducacion PRIMARY KEY(Id)
+    CONSTRAINT PK_NivelEducacion PRIMARY KEY(Id),
         -- El nombre del nivel de educación no puede estar vacío
     CONSTRAINT CK_NombreNivelEducacion CHECK (Nombre != '')
 );
@@ -111,18 +111,18 @@ CREATE TABLE dbo.Personal(
 
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Personal PRIMARY KEY(Id)
+    CONSTRAINT PK_Personal PRIMARY KEY(Id),
         -- Los años de experiencia deben ser mayor o igual a cero
-    CONSTRAINT CK_AniosExperiencia CHECK (AniosExperiencia >= 0)
+    CONSTRAINT CK_AniosExperiencia CHECK (AniosExperiencia >= 0),
         -- La especialidad no puede estar vacía
-    CONSTRAINT CK_Especialidad CHECK (Especialidad != '')
+    CONSTRAINT CK_Especialidad CHECK (Especialidad != ''),
         -- El idioma materno no puede estar vacío
-    CONSTRAINT CK_IdiomaMaterno CHECK (IdiomaMaterno != '')
+    CONSTRAINT CK_IdiomaMaterno CHECK (IdiomaMaterno != ''),
         -- El salario debe ser mayor a cero
-    CONSTRAINT CK_Salario CHECK (Salario > 0)
+    CONSTRAINT CK_Salario CHECK (Salario > 0),
     -- Llaves Foráneas
-    FOREIGN KEY (IdPersona) REFERENCES Personas(Id)
-    FOREIGN KEY (IdCargo) REFERENCES Cargos(Id)
+    FOREIGN KEY (IdPersona) REFERENCES Personas(Id),
+    FOREIGN KEY (IdCargo) REFERENCES Cargos(Id),
     FOREIGN KEY (IdNivelEducacion) REFERENCES NivelesEducacion(Id)
 );
 

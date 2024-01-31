@@ -1,5 +1,5 @@
 -- Agrega información a la tabla PAISES
-INSERT INTO PAISES (NombrePais) VALUES
+INSERT INTO dbo.Paises (Nombre) VALUES
 ('Estados Unidos'),
 ('China'),
 ('India'),
@@ -89,3 +89,4 @@ INSERT INTO dbo.Huespedes (IdPersona, IdAnfitrion)
 SELECT TOP 15 P.Id, H.Id
 FROM dbo.Personas P, dbo.Huespedes H
 WHERE P.Id != H.IdPersona;
+
