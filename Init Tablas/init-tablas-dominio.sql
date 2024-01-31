@@ -48,13 +48,11 @@ CREATE TABLE dbo.Huespedes(
     -- La relación entre PERSONA-HUESPED no puede ser NULL
     IdPersona NVARCHAR(11) NOT NULL,
     -- * En el caso de que el huesped sea un acompañante o un menor de edad *
-    IdAnfitrion NVARCHAR(11) DEFAULT NULL
+    IdAnfitrion INT NULL,
 
     -- REESTRICCIONES
         -- Llave Principal
     CONSTRAINT PK_Huesped PRIMARY KEY(Id),
-        -- La relación entre ACOMPAÑATE-ANFITRIÓN tiene como valor por defecto: NULL
-    CONSTRAINT DF_IdAnfitrion DEFAULT NULL FOR IdAnfitrion,
     -- Llaves Foráneas
     FOREIGN KEY (IdPersona) REFERENCES Personas(Id),
     FOREIGN KEY (IdAnfitrion) REFERENCES Huespedes(Id)
