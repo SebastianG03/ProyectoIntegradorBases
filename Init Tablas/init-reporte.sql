@@ -4,12 +4,12 @@ CREATE TABLE dbo.Desalojo(
     IdHuesped INT NOT NULL,
     -- El motivo del desalojo no puede ser NULL
     Motivo VARCHAR(50) NOT NULL,
-    FechaDeDesalojo DATETIME
+    FechaDeDesalojo DATETIME,
     -- REESTRICCIONES
         -- Llave Principal
-    CONSTRAINT PK_Desalojo PRIMARY KEY(Id)
+    CONSTRAINT PK_Desalojo PRIMARY KEY(Id),
         -- El motivo del desalojo no puede estar vacío
-    CONSTRAINT CK_MotivoDesalojo CHECK (Motivo != '')
+    CONSTRAINT CK_MotivoDesalojo CHECK (Motivo != ''),
     -- Llaves Foráneas
     FOREIGN KEY (IdHuesped) REFERENCES dbo.Huespedes(Id)
 );

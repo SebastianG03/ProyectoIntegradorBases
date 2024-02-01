@@ -1,4 +1,4 @@
--- Calcula la edad de una persona
+-- Muestra un reporte de una actividad en el itinerario del hotel
 CREATE PROC reporte_itinerario_actividad
     @itinerario_actividad_id INT
 AS
@@ -15,7 +15,7 @@ BEGIN
 	PRINT 'Nombre de la actividad: ' + @actividad_nombre;
 	PRINT '';
 
-	-- Variable que almacena la Id del guía encargado de la actividad
+	-- Variable que almacena la Id del guï¿½a encargado de la actividad
 	DECLARE @guia_id INT;
 	-- Obtiene la id del guia
 	SELECT
@@ -23,16 +23,16 @@ BEGIN
 	FROM dbo.ItinerarioActividades
 	WHERE Id = @itinerario_actividad_id;
 
-	-- En el caso de que la actividad cuente con un guía encargado
+	-- En el caso de que la actividad cuente con un guï¿½a encargado
 	IF (@guia_id IS NOT NULL)
 	BEGIN
-		-- Variables que almacenan información importante del guía
+		-- Variables que almacenan informaciï¿½n importante del guï¿½a
 		DECLARE @guia_nombre NVARCHAR(10);
 		DECLARE @guia_apellido NVARCHAR(10);
 		DECLARE @guia_anios_experiencia INT;
 		DECLARE @guia_idioma_materno VARCHAR(50);
 		DECLARE @guia_segunda_lengua NVARCHAR(10);
-		-- Obtiene la información del guía
+		-- Obtiene la informaciï¿½n del guï¿½a
 		SELECT 
 			@guia_nombre = P.Nombre,
 			@guia_apellido = P.Apellido,
@@ -43,24 +43,24 @@ BEGIN
 		JOIN dbo.Personal Pl ON G.IdPersonal = Pl.Id
 		JOIN dbo.Personas P ON Pl.IdPersona = P.Id
 		WHERE G.Id = @guia_id;
-		-- Muestra la información del guía
-		PRINT 'Información del guía encargado: '
+		-- Muestra la informaciï¿½n del guï¿½a
+		PRINT 'Informaciï¿½n del guï¿½a encargado: '
 		PRINT 'Nombre: ' + @guia_nombre + ' ' + @guia_apellido;
-		PRINT 'Años de experiencia: ' + CAST(@guia_anios_experiencia AS NVARCHAR(2));
+		PRINT 'Aï¿½os de experiencia: ' + CAST(@guia_anios_experiencia AS NVARCHAR(2));
 		PRINT 'Idioma materno: ' + @guia_idioma_materno;
 		PRINT 'Segunda lengua: ' + @guia_segunda_lengua;
 		PRINT '';
 	END;
 
-	PRINT 'Información de los huéspedes que participarán en la actividad: '
+	PRINT 'Informaciï¿½n de los huï¿½spedes que participarï¿½n en la actividad: '
 
-	-- Variables que almacenan la información de cada huésped
+	-- Variables que almacenan la informaciï¿½n de cada huï¿½sped
 	DECLARE @huesped_nombre NVARCHAR(10);
 	DECLARE @huesped_apellido NVARCHAR(10);
 
 	-- Declara el cursor
 	DECLARE huespedes_cursor CURSOR FOR
-	-- Define información de cada huésped
+	-- Define informaciï¿½n de cada huï¿½sped
 	SELECT DISTINCT
 		P.Nombre,
 		P.Apellido
@@ -77,10 +77,10 @@ BEGIN
 		@huesped_nombre,
 		@huesped_apellido
 	
-	-- Verifica @@FETCH_STATUS para ver si hay más filas para recuperar. 
+	-- Verifica @@FETCH_STATUS para ver si hay mï¿½s filas para recuperar. 
 	WHILE @@FETCH_STATUS = 0  
 	BEGIN   
-		-- Muestra los datos del huésped
+		-- Muestra los datos del huï¿½sped
 		PRINT @huesped_nombre + ' ' + @huesped_apellido;
 
 		-- Selecciona la siguiente fila 
