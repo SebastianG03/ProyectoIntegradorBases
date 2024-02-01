@@ -8,15 +8,15 @@ CREATE TABLE dbo.Opciones(
     -- El precio por adulto no puede ser NULL
     PrecioAdulto DECIMAL(4,2) NOT NULL,
     -- El precio por menor de edad no puede ser NULL
-    PrecioMenorEdad DECIMAL(4,2) NOT NULL
+    PrecioMenorEdad DECIMAL(4,2) NOT NULL,
 
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Opcion PRIMARY KEY(Id)
+    CONSTRAINT PK_Opcion PRIMARY KEY(Id),
         -- El número de días debe ser mayor a cero
-    CONSTRAINT CK_NumeroDias CHECK (NumeroDias > 0)
+    CONSTRAINT CK_NumeroDias CHECK (NumeroDias > 0),
         -- El precio por adulto debe ser mayor a cero
-    CONSTRAINT CK_PrecioAdulto CHECK (PrecioAdulto > 0)
+    CONSTRAINT CK_PrecioAdulto CHECK (PrecioAdulto > 0),
         -- El precio por menor de edad debe ser mayor a cero
     CONSTRAINT CK_PrecioMenorEdad CHECK (PrecioMenorEdad > 0)
 );
@@ -31,11 +31,11 @@ CREATE TABLE dbo.Reservaciones(
     -- La relación entre OPCION-RESERVACION no puede ser NULL
     IdOpcion INT NOT NULL,
     -- La fecha y hora de llegada del huesped no puede ser NULL
-    FechaLLegada DATETIME NOT NULL
+    FechaLLegada DATETIME NOT NULL,
 
     -- REESTRICCIONES
         -- Llave Primaria
-    CONSTRAINT PK_Reservacion PRIMARY KEY(Id)
+    CONSTRAINT PK_Reservacion PRIMARY KEY(Id),
     -- Llaves Foráneas
     -- Una reservación está asociada a un solo huésped
     FOREIGN KEY (IdHuesped) REFERENCES Huespedes(Id),
