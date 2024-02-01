@@ -47,13 +47,11 @@ CREATE TABLE dbo.Huespedes(
     -- La relación entre PERSONA-HUESPED no puede ser NULL
     IdPersona NVARCHAR(11) NOT NULL,
     -- * En el caso de que el huesped sea un acompañante o un menor de edad *
-    IdAnfitrion NVARCHAR(11) DEFAULT NULL
+    IdAnfitrion INT NULL,
 
     -- REESTRICCIONES
         -- Llave Principal
     CONSTRAINT PK_Huesped PRIMARY KEY(Id),
-        -- La relación entre ACOMPAÑATE-ANFITRIÓN tiene como valor por defecto: NULL
-    CONSTRAINT DF_IdAnfitrion DEFAULT NULL FOR IdAnfitrion,
     -- Llaves Foráneas
     FOREIGN KEY (IdPersona) REFERENCES Personas(Id),
     FOREIGN KEY (IdAnfitrion) REFERENCES Huespedes(Id)
@@ -64,7 +62,7 @@ CREATE TABLE dbo.Huespedes(
 CREATE TABLE dbo.Cargos(
     Id INT IDENTITY,
     -- El nombre del cargo no puede ser NULL
-    Nombre NVARCHAR(10) NOT NULL,
+    Nombre NVARCHAR(50) NOT NULL,
     EspaciosDisponibles TINYINT
 
     -- REESTRICCIONES
@@ -80,7 +78,7 @@ CREATE TABLE dbo.Cargos(
 CREATE TABLE dbo.NivelesEducacion(
     Id INT IDENTITY,
     -- El nombre del nivel de educación no puede ser NULL
-    Nombre NVARCHAR(20) NOT NULL
+    Nombre NVARCHAR(50) NOT NULL
 
     -- REESTRICCIONES
         -- Llave Principal
@@ -104,11 +102,11 @@ CREATE TABLE dbo.Personal(
     IdNivelEducacion INT NOT NULL,
     Especialidad VARCHAR(50), -- [OPCIONAL]
     FechaAgregarVacaciones DATE DEFAULT DATEADD(YEAR, 1, GETDATE()), -- Valor por defecto
-    DiasVacaciones TINYINT DEFAULT 0, -- Dias de vacaciones disponibles anualmente
+    DiasVacaciones TINYINT DEFAULT 15, -- Dias de vacaciones disponibles anualmente
     -- El idioma materno no puede ser NULL
     IdiomaMaterno VARCHAR(50) NOT NULL,
     -- El salario no puede ser NULL
-    Salario DECIMAL(4,2) NOT NULL
+    Salario DECIMAL(6,2) NOT NULL
 
     -- REESTRICCIONES
         -- Llave Primaria

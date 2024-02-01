@@ -3,7 +3,7 @@
 CREATE TABLE dbo.Proveedores(
     Id INT IDENTITY,
     -- El nombre del proveedor no puede ser NULL
-    Nombre NVARCHAR(10) NOT NULL,
+    Nombre NVARCHAR(50) NOT NULL,
     -- El tiempo de respuesta no puede ser NULL
     TiempoRespuesta DECIMAL(4,2) NOT NULL
     -- REESTRICCIONES
@@ -21,7 +21,7 @@ CREATE TABLE dbo.Proveedores(
 CREATE TABLE dbo.Ingredientes(
     Id INT IDENTITY,
     -- El nombre del ingrediente no puede ser NULL
-    Nombre NVARCHAR(10) NOT NULL,
+    Nombre NVARCHAR(50) NOT NULL,
     -- La relación entre PROVEEDOR-INGREDIENTE no puede ser NULL
     IdProveedor INT NOT NULL,
     -- El número de unidades disponibles no puede ser NULL
@@ -41,7 +41,7 @@ CREATE TABLE dbo.Ingredientes(
 CREATE TABLE dbo.TiposAlimentos(
     Id INT IDENTITY,
     -- El nombre del tipo de alimento no puede ser NULL
-    Nombre NVARCHAR(20),
+    Nombre NVARCHAR(50),
     -- REESTRICCIONES
         -- Llave Primaria
     CONSTRAINT PK_TipoComida PRIMARY KEY(Id),
@@ -54,7 +54,7 @@ CREATE TABLE dbo.TiposAlimentos(
 CREATE TABLE dbo.Alimentos(
     Id INT IDENTITY,
     -- El nombre del alimento no puede ser NULL
-    Nombre NVARCHAR(10) NOT NULL,
+    Nombre NVARCHAR(50) NOT NULL,
     -- La relación entre TIPO ALIMENTO-ALIMENTO no puede ser NULL
     IdTipo INT NOT NULL,
     -- Describe la preparación de la comida [OPCIONAL]

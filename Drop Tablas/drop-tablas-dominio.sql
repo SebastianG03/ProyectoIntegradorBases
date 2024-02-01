@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS dbo.Paises;
 DROP TABLE IF EXISTS dbo.Personas;
 -- Eliminar tabla HUESPEDES
 DROP TABLE IF EXISTS dbo.Huespedes;
+-- Eliminar tabla PERSONAL
+DROP TABLE IF EXISTS dbo.Personal;
 -- Eliminar tabla CARGOS
 DROP TABLE IF EXISTS dbo.Cargos;
 -- Eliminar tabla NIVELES DE EDUCACIÓN
 DROP TABLE IF EXISTS dbo.NivelesEducacion;
--- Eliminar tabla PERSONAL
-DROP TABLE IF EXISTS dbo.Personal;

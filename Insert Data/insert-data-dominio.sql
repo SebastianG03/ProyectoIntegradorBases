@@ -31,9 +31,10 @@ INSERT INTO dbo.Paises (Nombre) VALUES
 ('Colombia'),
 ('España');
 
--- Agrega la información a tabla de PERSONAS
+-- Agrega información a tabla de PERSONAS
 INSERT INTO dbo.Personas (Id, Nombre, Apellido, FechaNacimiento, IdPaisOrigen) VALUES
-('12345678901', 'Juan', 'Perez', '1990-05-15', 1),     -- Ejemplo de formato de fecha: 'YYYY-MM-DD'
+-- Huéspedes
+('12345678901', 'Juan', 'Perez', '1990-05-15', 1),
 ('23456789012', 'Maria', 'Gomez', '1985-10-20', 2),
 ('34567890123', 'Pedro', 'Rodriguez', '1988-03-12', 3),
 ('45678901234', 'Ana', 'Lopez', '1992-07-05', 4),
@@ -66,27 +67,208 @@ INSERT INTO dbo.Personas (Id, Nombre, Apellido, FechaNacimiento, IdPaisOrigen) V
 ('76987654321', 'Julio', 'Lara', '1993-11-30', 1),
 ('87987654321', 'Monica', 'Vargas', '1984-05-04', 2),
 ('98987654321', 'Victor', 'Reyes', '1979-02-19', 3),
-('09987654321', 'Isabel', 'Pacheco', '1995-08-15', 4),
-('20987654321', 'Hector', 'Guerrero', '1980-01-10', 5),
-('31987654321', 'Ana', 'Montoya', '1987-04-06', 6),
-('42987654321', 'David', 'Orozco', '1972-10-27', 7),
-('53987654321', 'Laura', 'Mendez', '1990-03-02', 8),
-('64987654321', 'Jose', 'Herrera', '1983-06-28', 9),
-('75987654321', 'Diana', 'Gallego', '1998-09-23', 10),
-('86987654321', 'Felipe', 'Rangel', '1971-12-18', 11),
-('97987654321', 'Carolina', 'Puentes', '1986-07-13', 12),
-('08987654321', 'Andres', 'Bermudez', '1994-04-07', 13),
-('19987654321', 'Tatiana', 'Salazar', '1974-01-02', 14),
-('30987654321', 'Roberto', 'Cortes', '1989-05-27', 15);
+('09987651321', 'Isabel', 'Pacheco', '1995-08-15', 4),
+('20981651321', 'Hector', 'Guerrero', '1980-01-10', 5),
+('31987651321', 'Ana', 'Montoya', '1987-04-06', 6),
+('42987651321', 'David', 'Orozco', '1972-10-27', 7),
+('53987651321', 'Laura', 'Mendez', '1990-03-02', 8),
 
--- Agregar la información a la tabla HUESPEDES
+-- Personal
+('64987154321', 'Cristina', 'Gomez', '1989-09-29', 9),
+('75987454321', 'Manuel', 'Castillo', '1977-07-13', 10),
+('86987154321', 'Eva', 'Cortez', '1996-12-18', 11),
+('97987354321', 'Ricardo', 'Fernandez', '1983-06-20', 12),
+('08987354321', 'Lucia', 'Silva', '1978-04-03', 13),
+('19987954321', 'Francisco', 'Ortiz', '1993-02-14', 14),
+('20981654321', 'Natalia', 'Gutierrez', '1985-03-01', 15),
+('31987554921', 'Alejandro', 'Blanco', '1971-11-22', 16),
+('42987154321', 'Elena', 'Santos', '1990-05-05', 17),
+('53987954321', 'Andres', 'Lopez', '1976-08-30', 18),
+('64987954321', 'Laura', 'Perez', '1987-01-23', 19),
+('75987954321', 'Antonio', 'Garcia', '1994-10-17', 20),
+('86981954321', 'Sara', 'Hernandez', '1982-12-08', 21),
+('97981654321', 'Daniel', 'Martinez', '1973-07-06', 22),
+('08981654321', 'Maria', 'Rodriguez', '1991-04-19', 23),
+('19981654321', 'Diego', 'Sanchez', '1980-09-02', 24),
+('20982654321', 'Ana', 'Gomez', '1997-03-27', 25),
+('31981654321', 'Javier', 'Fernandez', '1975-10-31', 26),
+('42982654321', 'Elisa', 'Diaz', '1990-07-04', 27),
+('53983654321', 'Carlos', 'Gutierrez', '1976-04-17', 28),
+('64984654321', 'Laura', 'Hernandez', '1987-11-12', 29),
+('75987554321', 'Miguel', 'Perez', '1994-08-25', 30),
+('86987554321', 'Isabel', 'Lopez', '1982-03-28', 1),
+('97987554321', 'Raul', 'Garcia', '1971-12-21', 2),
+('08987554321', 'Carolina', 'Ruiz', '1990-06-14', 3),
+('19987554321', 'Sergio', 'Fernandez', '1979-01-07', 4),
+('20987554321', 'Patricia', 'Sanchez', '1996-04-30', 5),
+('31987554321', 'Juan', 'Martinez', '1985-09-23', 6),
+('42987554321', 'Maria', 'Gutierrez', '1973-02-16', 7),
+('53987554321', 'Alberto', 'Diaz', '1990-07-21', 8),
+('64987654321', 'Natalia', 'Hernandez', '1987-12-14', 9),
+('75987654321', 'Daniel', 'Santos', '1994-11-07', 10),
+('86987654321', 'Carmen', 'Perez', '1983-06-30', 11),
+('97987654321', 'Jose', 'Gonzalez', '1977-01-23', 12),
+('08987654321', 'Elena', 'Martinez', '1992-04-16', 13),
+('19987754321', 'Luis', 'Lopez', '1981-09-09', 14),
+('20987154321', 'Ana', 'Torres', '1998-02-02', 15),
+('31987154321', 'Javier', 'Garcia', '1976-05-27', 16),
+('42987154320', 'Laura', 'Ruiz', '1990-10-20', 17),
+('53987154321', 'Carlos', 'Fernandez', '1974-03-13', 18),
+('64987154320', 'Marta', 'Sanchez', '1987-08-06', 19),
+('75987154321', 'Raul', 'Diaz', '1993-01-31', 20),
+('86987154320', 'Sonia', 'Gutierrez', '1982-04-24', 21),
+('97987154321', 'Pedro', 'Fernandez', '1972-11-17', 22),
+('08987154321', 'Maria', 'Hernandez', '1991-06-10', 23),
+('19987154321', 'Daniel', 'Garcia', '1979-11-03', 24),
+('20987254321', 'Carmen', 'Gutierrez', '1996-02-26', 25),
+('31987254321', 'Luis', 'Fernandez', '1985-07-21', 26),
+('42987254321', 'Ana', 'Rodriguez', '1973-12-14', 27),
+('53987254321', 'Jose', 'Diaz', '1990-05-07', 28),
+('64987254321', 'Elena', 'Gomez', '1987-10-31', 29),
+('75987254321', 'Antonio', 'Perez', '1994-09-24', 30),
+('86987254321', 'Sara', 'Hernandez', '1982-02-17', 1),
+('97987254321', 'David', 'Garcia', '1973-07-12', 2),
+('08987254321', 'Maria', 'Gonzalez', '1991-11-05', 3),
+('19987254321', 'Francisco', 'Ruiz', '1980-04-28', 4),
+('20987354321', 'Natalia', 'Sanchez', '1997-09-21', 5),
+('31987354321', 'Alejandro', 'Martinez', '1985-02-14', 6),
+('42987354321', 'Elena', 'Gutierrez', '1972-05-09', 7),
+('53987354321', 'Andres', 'Diaz', '1990-10-02', 8),
+('00345678901', 'Juan', 'Perez', '1990-05-15', 1),
+('00456789012', 'Maria', 'Gomez', '1985-10-20', 2),
+('00567890123', 'Pedro', 'Rodriguez', '1988-03-12', 3),
+('00678901234', 'Ana', 'Lopez', '1992-07-05', 4),
+('00789012345', 'Luis', 'Martinez', '1980-12-30', 5),
+('00890123456', 'Laura', 'Hernandez', '1995-09-25', 6),
+('00901234567', 'Carlos', 'Garcia', '1975-04-18', 7),
+('00012345678', 'Sofia', 'Diaz', '1983-11-08', 8),
+('00123456789', 'Diego', 'Sanchez', '1998-06-02', 9),
+('00234567890', 'Marta', 'Torres', '1987-01-17', 10),
+('00345098765', 'Alejandro', 'Rojas', '1991-08-11', 11),
+('00450987654', 'Carmen', 'Flores', '1982-02-23', 12),
+('00509876543', 'Javier', 'Santos', '1978-07-28', 13),
+('00098765432', 'Elena', 'Vega', '1994-04-05', 14),
+('00098765431', 'Pablo', 'Morales', '1989-09-09', 15),
+('00876543210', 'Rosa', 'Iglesias', '1970-06-14', 16);
+
+-- Agrega información a la tabla HUESPEDES
 INSERT INTO dbo.Huespedes (IdPersona)
-SELECT TOP 30 Id
+SELECT TOP 40 Id
 FROM dbo.Personas;
 
--- Agregar la información a la tabla HUESPEDES (ACOMPAÑANTES)
-INSERT INTO dbo.Huespedes (IdPersona, IdAnfitrion)
-SELECT TOP 15 P.Id, H.Id
-FROM dbo.Personas P, dbo.Huespedes H
-WHERE P.Id != H.IdPersona;
+-- Agrega información a la tabla CARGOS
+INSERT INTO dbo.Cargos (Nombre, EspaciosDisponibles) VALUES
+('Gerente de hotel', 1),
+('Asistente de gerencia', 1),
+('Guía turístico', 10),
+('Asistente de habitación', 5),
+('Camarero', 10),
+('Barman', 2),
+('Camarero de bar', 2),
+('Asistente de tienda', 2),
+('Personal de spa/fitness', 8),
+('Mantenimiento', 5),
+('Asistentes de huésped', 10),
+('Servicio de limpieza', 10)
 
+-- Agrega información a la tabla NIVELES-DE-EDUCACIÓN
+INSERT INTO dbo.NivelesEducacion (Nombre) VALUES
+('Educación Primaria'),
+('Educación Secundaria'),
+('Educación Técnica'),
+('Educación Universitaria'),
+('Maestría'),
+('Doctorado');
+
+-- Agrega información a la tabla PERSONAL
+INSERT INTO dbo.Personal (IdPersona, IdCargo, AniosExperiencia, IdNivelEducacion, Especialidad, IdiomaMaterno, Salario)
+VALUES 
+-- Gerente de hotel
+('64987154321', 1, 10, 4, 'Gestión Hotelera', 'Español', 5000.00),
+
+-- Asistente de gerencia
+('75987454321', 2, 10, 4, 'Administración', 'Español', 3500.00),
+
+-- Guías turísticos (10)
+('86987154321', 3, 1, 3, 'Historia del Arte', 'Español', 2500.00),
+('97987354321', 3, 2, 3, 'Geografía', 'Español', 2500.00),
+('08987354321', 3, 3, 3, 'Cultura Local', 'Español', 2500.00),
+('19987954321', 3, 4, 3, 'Historia', 'Español', 2500.00),
+('20981654321', 3, 5, 3, 'Ecoturismo', 'Español', 2500.00),
+('31987554921', 3, 6, 3, 'Historia del Arte', 'Español', 2500.00),
+('42987154321', 3, 7, 3, 'Geografía', 'Español', 2500.00),
+('53987954321', 3, 8, 3, 'Cultura Local', 'Español', 2500.00),
+('64987954321', 3, 9, 3, 'Historia', 'Español', 2500.00),
+('75987954321', 3, 10, 3, 'Ecoturismo', 'Español', 2500.00),
+
+-- Asistentes de habitación (5)
+('86981954321', 4, 1, 2, 'Limpieza y Mantenimiento', 'Español', 2200.00),
+('97981654321', 4, 2, 2, 'Cuidado del Cliente', 'Español', 2200.00),
+('08981654321', 4, 3, 2, 'Limpieza y Mantenimiento', 'Español', 2200.00),
+('19981654321', 4, 4, 2, 'Cuidado del Cliente', 'Español', 2200.00),
+('20982654321', 4, 5, 2, 'Limpieza y Mantenimiento', 'Español', 2200.00),
+
+-- Camareros (10)
+('31981654321', 5, 1, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('42982654321', 5, 2, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('53983654321', 5, 3, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('64984654321', 5, 4, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('75987554321', 5, 5, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('86987554321', 5, 6, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('97987554321', 5, 7, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('08987554321', 5, 8, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('19987554321', 5, 9, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+('20987554321', 5, 10, 2, 'Servicio de Alimentos', 'Español', 2300.00),
+
+-- Barman (2)
+('31987554321', 6, 1, 2, 'Bartender', 'Español', 2400.00),
+('42987554321', 6, 2, 2, 'Bartender', 'Español', 2400.00),
+
+-- Camareros de bar (2)
+('53987554321', 7, 1, 2, 'Servicio de Bar', 'Español', 2500.00),
+('64987654321', 7, 2, 2, 'Servicio de Bar', 'Español', 2500.00),
+
+-- Asistentes de tienda (2)
+('75987654321', 8, 1, 2, 'Ventas y Atención al Cliente', 'Español', 2600.00),
+('86987654321', 8, 2, 2, 'Ventas y Atención al Cliente', 'Español', 2600.00),
+
+-- Personal de spa/fitness (8)
+('97987154321', 9, 1, 2, 'Terapeuta de Spa', 'Español', 2700.00),
+('08987154321', 9, 2, 2, 'Entrenador Fitness', 'Español', 2700.00),
+('19987154321', 9, 3, 2, 'Terapeuta de Spa', 'Español', 2700.00),
+('20987254321', 9, 4, 2, 'Entrenador Fitness', 'Español', 2700.00),
+('31987254321', 9, 5, 2, 'Terapeuta de Spa', 'Español', 2700.00),
+('42987254321', 9, 6, 2, 'Entrenador Fitness', 'Español', 2700.00),
+('53987254321', 9, 7, 2, 'Terapeuta de Spa', 'Español', 2700.00),
+('64987254321', 9, 8, 2, 'Entrenador Fitness', 'Español', 2700.00),
+
+-- Mantenimiento (5)
+('75987254321', 10, 1, 3, 'Electricidad y Plomería', 'Español', 2800.00),
+('86987254321', 10, 2, 3, 'Carpintería y Pintura', 'Español', 2800.00),
+('97987254321', 10, 3, 3, 'Electricidad y Plomería', 'Español', 2800.00),
+('08987254321', 10, 4, 3, 'Carpintería y Pintura', 'Español', 2800.00),
+('19987254321', 10, 5, 3, 'Electricidad y Plomería', 'Español', 2800.00),
+
+-- Asistentes de huésped (10)
+('20987354321', 11, 1, 2, 'Atención al Cliente', 'Español', 2400.00),
+('31987354321', 11, 2, 2, 'Atención al Cliente', 'Español', 2400.00),
+('42987354321', 11, 3, 2, 'Atención al Cliente', 'Español', 2400.00),
+('53987354321', 11, 4, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00345678901', 11, 5, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00456789012', 11, 6, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00567890123', 11, 7, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00678901234', 11, 8, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00789012345', 11, 9, 2, 'Atención al Cliente', 'Español', 2400.00),
+('00890123456', 11, 10, 2, 'Atención al Cliente', 'Español', 2400.00),
+
+-- Servicio de limpieza (10)
+('00901234567', 12, 1, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00012345678', 12, 2, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00123456789', 12, 3, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00234567890', 12, 4, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00345098765', 12, 5, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00450987654', 12, 6, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00509876543', 12, 7, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00098765432', 12, 8, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00098765431', 12, 9, 2, 'Limpieza de Habitaciones', 'Español', 2100.00),
+('00876543210', 12, 10, 2, 'Limpieza de Habitaciones', 'Español', 2100.00);
