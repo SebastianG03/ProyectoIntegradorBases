@@ -1,4 +1,4 @@
--- Crea un vista que contiene toda la información relevante de un huésped
+-- Crea un vista que contiene toda la información relevante de un empleado
 CREATE VIEW info_personal_view
 AS
 SELECT
