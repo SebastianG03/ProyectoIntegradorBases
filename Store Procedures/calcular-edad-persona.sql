@@ -3,6 +3,12 @@ CREATE PROC calcular_edad_persona
     @persona_id VARCHAR(11)
 AS
 BEGIN
+    -- Verifica que la persona sí se encuentre en los registros del hotel
+	IF NOT EXISTS(SELECT * FROM dbo.Personas WHERE Id = @persona_id)
+	BEGIN
+		PRINT 'La persona no se encuentra en los registros del hotel.';
+		RETURN;
+	END;
     -- Fecha de nacimiento del huésped
     DECLARE @fecha_nacimiento DATE;
 
@@ -40,5 +46,5 @@ IF OBJECT_ID ( 'calcular_edad_persona', 'P' ) IS NOT NULL
 
 -- ejecutar store procedure
 DECLARE @persona_edad INT;
-EXEC @persona_edad = calcular_edad_persona '01234567890';
+EXEC @persona_edad = calcular_edad_persona '00000111123';
 PRINT CAST(@persona_edad AS NVARCHAR(4));
