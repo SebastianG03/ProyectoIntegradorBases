@@ -3,6 +3,13 @@ CREATE PROC reporte_itinerario_actividad
     @itinerario_actividad_id INT
 AS
 BEGIN
+	-- Verifica que la actividad sí se encuentre en el itinerario
+	IF NOT EXISTS(SELECT * FROM dbo.ItinerarioActividades WHERE Id = @itinerario_actividad_id)
+	BEGIN
+		PRINT 'La actividad no se encuentra en el itinerario.';
+		RETURN;
+	END;
+
 	-- Variable que almacena el nombre de la actividad
 	DECLARE @actividad_nombre NVARCHAR(50);
 	-- Obtiene el nombre de la actividad
